@@ -5,7 +5,9 @@ define("CONTROLLERS", SRC . 'Controllers/');
 define("MODELS", SRC . 'Models/');
 define("VIEWS", SRC . 'Views/');
 
-define('HOST', 'localhost:8889');
-define('DATABASE', 'purplestream');
-define('USER', 'root');
-define('PASSWORD', 'root');
+define("DB_CONFIG", [
+    'HOST' => '127.0.0.1',
+    'DATABASE' => 'purplestream',
+    'USER' => 'root',
+    'PASSWORD' => ''
+]);
