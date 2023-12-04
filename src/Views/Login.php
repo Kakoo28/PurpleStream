@@ -6,7 +6,7 @@
         <h1>Connectez-vous à votre compte</h1>
     </div>
     <div class="button-container">
-        <form action="/process-login.php" method="post">
+        <form action="/process-login" method="post">
             <input type="text" id="username" name="username" placeholder="Email" required>
             <input type="password" id="password" name="password" placeholder="Mot de passe" required>
             <button type="submit" id="btnLogin">Se connecter</button>
