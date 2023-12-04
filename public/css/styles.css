@@ -1,0 +1,239 @@
+:root {
+    --violet-color: #6A1A9F;
+    --text-color: white;
+    --border-color: var(--violet-color);
+    --background-color: transparent;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'arial', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Styles for the main heading */
+h1 {
+    font-size: 4vw;
+    letter-spacing: 1px;
+    font-family: 'roboto', sans-serif;
+    padding: 2vw 0;
+}
+
+/* Styles for hyperlinks */
+a {
+    cursor: pointer;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+/* Styles for a specific text element */
+span {
+    color: #9323dd;
+    font-weight: 500;
+}
+
+/* Styles for the header section */
+.header-content {
+    background: linear-gradient(to bottom, transparent 0%, #000000e6 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 1;
+    align-items: center;
+    margin-top: 82vw;
+    margin-bottom: -2px;
+}
+
+/* Styles for the background image */
+#background {
+    background-image: url("/img/backgroundHomePage.png");
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Styles for the main container */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100vh;
+}
+
+/* Styles for the button container */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000e6;
+    padding-bottom: 20px;
+}
+
+/* Styles for the logo image */
+.logo {
+    width: 50%;
+    height: auto;
+}
+
+/* Styles for buttons */
+#btnAnimes,
+#btnLogin {
+    width: 90%;
+    font-size: 14px;
+    padding: 8px 20px;
+    margin: 8px 0;
+    color: var(--text-color);
+    border: 3px solid var(--border-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Styles for button hover effect */
+#btnAnimes:hover,
+#btnLogin:hover {
+    background-color: var(--violet-color);
+}
+
+/* Styles for the first button in the container */
+#btnAnimes {
+    background-color: var(--violet-color);
+}
+
+/* Additional styles for the login form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Add some space between the existing content and the login form */
+}
+
+label {
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+input {
+    width: 90%;
+    padding: 8px;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--border-color);
+    background-color: transparent;
+    color: var(--text-color);
+    transition: border-color 0.3s ease-in-out;
+}
+
+input {
+    width: 160%;
+    padding: 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--border-color);
+    background-color: transparent;
+    color: var(--text-color);
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Styles for focused input fields */
+input:focus {
+    border-color: var(--violet-color);
+}
+
+/* Styles for invalid input fields (optional) */
+input:invalid {
+    border-color: #c85050; /* Change to the color you prefer for invalid input */
+}
+
+/* Styles for placeholder text */
+input::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;.back-to-main {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+}
+}
+
+/* Additional styles for the password input field visibility toggle (optional) */
+input[type="password"] {
+    position: relative;
+}
+
+input[type="password"] ~ .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Style for password visibility icon */
+input[type="password"] ~ .toggle-password i {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+/* Style for password visibility icon on hover */
+input[type="password"] ~ .toggle-password:hover i {
+    color: var(--violet-color);
+}
+
+button {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: var(--violet-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5c0a87;
+}
+
+/* Styles for the paragraph below the form */
+p {
+    margin-top: 20px;
+    color: var(--text-color);
+}
+
+a {
+    color: #9323dd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#color-w{
+    color: white;
+}
+
