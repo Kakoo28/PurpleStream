@@ -21,11 +21,12 @@ body {
 /* GLOBAL */
 
 .logo {
-    padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
     width: 50%;
     height: auto;
-    max-width: 400px;
+    min-width: 200px;
+    max-width: 350px;
 }
 
 .main {
@@ -70,6 +71,24 @@ body {
     text-align: center;
     transition: background-color 0.3s ease-in-out;
     background-color: transparent;
+}
+
+.error-message {
+    margin: 0;
+    color: rgb(255, 65, 65);
+}
+
+.success-message {
+    margin: 0;
+    color: rgb(65, 255, 65);
+}
+
+.input-error:invalid {
+    outline: 2px solid rgb(255, 65, 65);
+}
+
+input:focus {
+    outline: none;
 }
 
 a {

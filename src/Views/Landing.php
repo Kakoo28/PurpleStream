@@ -9,7 +9,7 @@
     <div class="container button-container">
         <a href="#" class="button button--solid">👑 Voir les animes disponibles</a>
         <a href="/login" class="button">Se connecter</a>
-        <a class="color-w" href="/register">ou <span>Créer un compte</span></a>
+        <a class="color-w" href="/register">ou <span>Créez votre compte</span></a>
     </div>
 </main>
 
