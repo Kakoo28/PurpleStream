@@ -11,6 +11,4 @@ class UserController {
     public function showLogin() {
         require VIEWS . 'Login.php';
     }
-
-
 }
