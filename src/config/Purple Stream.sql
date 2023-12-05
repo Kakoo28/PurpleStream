@@ -3,7 +3,6 @@ CREATE TABLE `anime` (
   `animeName` varchar(100),
   `animeDescription` text,
   `animeImage` varchar(255),
-  `animeMP4` varchar(255),
   `animeCategoryID` integer,
   `animeSeasonID` integer,
   `animeLanguageID` integer
@@ -20,6 +19,7 @@ CREATE TABLE `animeEpisode` (
   `episodeName` varchar(100),
   `episodeDescription` text,
   `episodeIMG` varchar(255),
+  `episodeMP4` varchar(30),
   `episodeTime` varchar(20)
 );
 
