@@ -25,7 +25,8 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     width: 50%;
     height: auto;
-    max-width: 400px;
+    min-width: 250px;
+    max-width: 350px;
 }
 
 .main {
