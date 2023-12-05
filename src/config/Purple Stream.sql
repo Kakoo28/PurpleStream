@@ -3,9 +3,14 @@ CREATE TABLE `anime` (
   `animeName` varchar(100),
   `animeDescription` text,
   `animeImage` varchar(255),
-  `animeCategoryID` integer,
+  `animeMP4` varchar(255),
   `animeSeasonID` integer,
   `animeLanguageID` integer
+);
+
+CREATE TABLE `animeCat` (
+  `animeID` integer,
+  `animeCategoryID` integer
 );
 
 CREATE TABLE `animeCategory` (
@@ -19,7 +24,6 @@ CREATE TABLE `animeEpisode` (
   `episodeName` varchar(100),
   `episodeDescription` text,
   `episodeIMG` varchar(255),
-  `episodeMP4` varchar(30),
   `episodeTime` varchar(20)
 );
 
@@ -50,7 +54,9 @@ CREATE TABLE `usersProfiles` (
   `userProfileAvatar` varchar(255)
 );
 
-ALTER TABLE `anime` ADD FOREIGN KEY (`animeCategoryID`) REFERENCES `animeCategory` (`animeCategoryID`);
+ALTER TABLE `animeCat` ADD FOREIGN KEY (`animeCategoryID`) REFERENCES `animeCategory` (`animeCategoryID`);
+
+ALTER TABLE `animeCat` ADD FOREIGN KEY (`animeID`) REFERENCES `anime` (`animeID`);
 
 ALTER TABLE `usersProfiles` ADD FOREIGN KEY (`userdID`) REFERENCES `users` (`userdID`);
 
