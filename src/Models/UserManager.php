@@ -9,7 +9,6 @@ class UserManager
     public function __construct()
     {
         $this->connexion = new \PDO('mysql:host=' . DB_CONFIG['HOST'] . ';dbname='. DB_CONFIG['DATABASE'] .';charset=utf8', DB_CONFIG['USER'], DB_CONFIG['PASSWORD']);
-        // Uncaught Error: Object of class PDO could not be converted to string in /home/kakoo/Documents/PurpleStream/src/Models/UserManager.php:21
     }
 
     public function create(UserModel $user)
