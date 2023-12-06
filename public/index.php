@@ -8,6 +8,11 @@ require '../vendor/autoload.php';
 $router = new PurpleStream\Router($_SERVER['REQUEST_URI']);
 
 $router->get('/', 'LandingController@index');
-$router->get('/login', 'UserController@showLogin');
+
+$router->get('/login?:status', 'UserController@showLoginForm');
+$router->get('/register?:error', 'UserController@showRegisterForm');
+
+$router->post('/process-login', 'UserController@login');
+$router->post('/process-register', 'UserController@create');
 
 $router->run();
