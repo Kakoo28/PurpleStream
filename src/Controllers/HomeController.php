@@ -11,4 +11,5 @@ class HomeController {
     public function index() {
         require VIEWS . 'Home.php';
     }
+
 }
