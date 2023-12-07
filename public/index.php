@@ -15,4 +15,7 @@ $router->get('/register?:error', 'UserController@showRegisterForm');
 $router->post('/process-login', 'UserController@login');
 $router->post('/process-register', 'UserController@create');
 
+$router->get('/anime/create', 'AnimeController@showcreateAnime');
+$router->post('/anime/create/finish', 'AnimeController@createAnime');
+
 $router->run();
