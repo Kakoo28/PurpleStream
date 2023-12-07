@@ -18,4 +18,6 @@ $router->post('/process-register', 'UserController@create');
 $router->get('/anime/create', 'AnimeController@showcreateAnime');
 $router->post('/anime/create/finish', 'AnimeController@createAnime');
 
+$router->get('/home', 'AnimeController@showHomePage');
+
 $router->run();

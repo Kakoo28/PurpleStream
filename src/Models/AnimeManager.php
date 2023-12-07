@@ -36,4 +36,12 @@ class AnimeManager
         return $this->connexion->lastInsertId();
     }
 
+    public function getAll()
+    {
+        // Requête pour récupérer tous les animes
+        $stmt = $this->connexion->prepare('SELECT * FROM anime');
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Anime::class);
+    }
+
 }
