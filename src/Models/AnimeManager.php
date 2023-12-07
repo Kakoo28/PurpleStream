@@ -26,7 +26,7 @@ class AnimeManager
         // Recuperation de l'id dans une variable
         $anime->setAnimeID( $this->connexion->lastInsertId());
         foreach ($anime->getCategories() as $category_id){
-            $stmt = $this->connexion->prepare("INSERT INTO anim_cat (anime_id, category_id) VALUES (? ,?)");
+            $stmt = $this->connexion->prepare("INSERT INTO anime_cat (anime_id, category_id) VALUES (? ,?)");
             $stmt->execute(array(
                 $anime->getAnimeID(),
                 $category_id
