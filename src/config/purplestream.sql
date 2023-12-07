@@ -73,6 +73,7 @@ create table users
    user_email           varchar(100),
    user_name            varchar(30),
    user_password        varchar(255),
+   user_role            int not null DEFAULT 0,
    primary key (user_id)
 );
 
