@@ -4,73 +4,73 @@ namespace PurpleStream\Models;
 
 class UserModel
 {
-    private $userID;
-    private $userEmail;
-    private $userName;
-    private $userPassword;
-    private $userRole;
+    private $user_id;
+    private $user_email;
+    private $user_name;
+    private $user_password;
+    private $user_role;
     
     public function __construct()
     {
 
     }
 
-    public function setAll($userID, $userEmail, $userName, $userPassword, $userRole)
+    public function setAll($user_id, $user_email, $user_name, $user_password, $user_role)
     {
-        $this->userID = $userID;
-        $this->userEmail = $userEmail;
-        $this->userName = $userName;
-        $this->userPassword = $userPassword;
-        $this->userRole = $userRole;
+        $this->user_id = $user_id;
+        $this->user_email = $user_email;
+        $this->user_name = $user_name;
+        $this->user_password = $user_password;
+        $this->user_role = $user_role;
     }
 
-    public function setUserID($userID)
+    public function setuser_id($user_id)
     {
-        $this->userID = $userID;
+        $this->user_id = $user_id;
     }
 
-    public function getUserID()
+    public function getuser_id()
     {
-        return $this->userID;
+        return $this->user_id;
     }
 
-    public function setUserEmail($userEmail)
+    public function setuser_email($user_email)
     {
-        $this->userEmail = $userEmail;
+        $this->user_email = $user_email;
     }
 
-    public function getUserEmail()
+    public function getuser_email()
     {
-        return $this->userEmail;
+        return $this->user_email;
     }
 
-    public function setUserName($userName)
+    public function setuser_name($user_name)
     {
-        $this->userName = $userName;
+        $this->user_name = $user_name;
     }
 
-    public function getUserName()
+    public function getuser_name()
     {
-        return $this->userName;
+        return $this->user_name;
     }
 
-    public function setUserPassword($userPassword)
+    public function setuser_password($user_password)
     {
-        $this->userPassword = $userPassword;
+        $this->user_password = $user_password;
     }
 
-    public function getUserPassword()
+    public function getuser_password()
     {
-        return $this->userPassword;
+        return $this->user_password;
     }
 
-    public function setUserRole($userRole)
+    public function setuser_role($user_role)
     {
-        $this->userRole = $userRole;
+        $this->user_role = $user_role;
     }
 
-    public function getUserRole()
+    public function getuser_role()
     {
-        return $this->userRole;
+        return $this->user_role;
     }
 }
