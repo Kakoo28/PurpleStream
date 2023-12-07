@@ -35,9 +35,9 @@ create table anime_season
 );
 
 /*==============================================================*/
-/* Table : anim_cat                                             */
+/* Table : anime_cat                                             */
 /*==============================================================*/
-create table anim_cat
+create table anime_cat
 (
    anime_id             int not null,
    category_id          int not null,
@@ -98,10 +98,10 @@ alter table anime_episode add constraint fk_avoir foreign key (season_id)
 alter table anime_season add constraint fk_diviser foreign key (anime_id)
       references anime (anime_id) on delete restrict on update restrict;
 
-alter table anim_cat add constraint fk_correspondre foreign key (anime_id)
+alter table anime_cat add constraint fk_correspondre foreign key (anime_id)
       references anime (anime_id) on delete restrict on update restrict;
 
-alter table anim_cat add constraint fk_correspondre2 foreign key (category_id)
+alter table anime_cat add constraint fk_correspondre2 foreign key (category_id)
       references category (category_id) on delete restrict on update restrict;
 
 alter table users_profiles add constraint fk_regrouper foreign key (user_id)
