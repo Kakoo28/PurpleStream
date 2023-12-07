@@ -20,7 +20,7 @@ class AnimeController
         $categories = $categoryController->getAll();
         $languageController = new LanguageController();
         $languages = $languageController->getAll();
-        require VIEWS . 'FormAnime.php';
+        require VIEWS . 'FormCreateAnime.php';
     }
 
     public function createAnime(){
