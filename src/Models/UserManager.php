@@ -13,19 +13,19 @@ class UserManager
 
     public function create(UserModel $user)
     {
-        $stmt = $this->connexion->prepare("INSERT INTO users (userName, userEmail, userPassword) VALUES (:userName, :userEmail, :userPassword)");
+        $stmt = $this->connexion->prepare("INSERT INTO users (user_name, user_email, user_password) VALUES (:user_name, :user_email, :user_password)");
         $stmt->execute([
-            'userName' => $user->getUserName(),
-            'userEmail' => $user->getUserEmail(),
-            'userPassword' => $user->getUserPassword()
+            'user_name' => $user->getUserName(),
+            'user_email' => $user->getUserEmail(),
+            'user_password' => $user->getUserPassword()
         ]);
     }
 
     public function getUserByEmail($email)
     {
-        $stmt = $this->connexion->prepare("SELECT * FROM users WHERE userEmail = :email");
+        $stmt = $this->connexion->prepare("SELECT * FROM users WHERE user_email = :user_email");
         $stmt->execute([
-            'email' => $email
+            'user_email' => $email
         ]);
         $result = $stmt->fetch();
         return $result;
