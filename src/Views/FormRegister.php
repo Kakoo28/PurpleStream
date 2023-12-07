@@ -8,11 +8,17 @@
     </div>
     <div class="container form__container">
         <form action="/process-register" method="post" class="form register-form">
-            <input type="text" id="username" name="userName" placeholder="Nom d'utilisateur" required>
+            <input 
+                type="text" 
+                id="username" 
+                name="user_name" 
+                placeholder="Nom d'utilisateur" 
+                required
+            >
             <input 
                 type="email" 
                 id="email" 
-                name="userEmail" 
+                name="user_email" 
                 placeholder="Email"
                 class="<?php if (isset($_GET['error']) && $_GET['error'] == '2') echo "input-error" ?>"
                 required
@@ -25,14 +31,14 @@
             <input 
                 type="password" 
                 id="password" 
-                name="userPassword" 
+                name="user_password" 
                 placeholder="Mot de passe" 
                 required
             >
             <input 
                 type="password" 
                 id="confirm-password" 
-                name="userConfirmPassword" 
+                name="user_confirm_password" 
                 placeholder="Mot de passe de confirmation" 
                 class="<?php if (isset($_GET['error']) && $_GET['error'] == '1') echo "input-error"; ?>"
                 required

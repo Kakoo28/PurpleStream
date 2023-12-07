@@ -13,9 +13,20 @@
             }
         ?>
         <form action="/process-login" method="post" class="form login-form">
-            
-            <input type="email" id="email" name="userEmail" placeholder="Email" required>
-            <input type="password" id="password" name="userPassword" placeholder="Mot de passe" required>
+            <input 
+                type="email" 
+                id="email" 
+                name="user_email" 
+                placeholder="Email" 
+                required
+            >
+            <input 
+                type="password" 
+                id="password" 
+                name="user_password" 
+                placeholder="Mot de passe" 
+                required
+            >
             <button type="submit" class="button submit-button">Connexion</button>
         </form>
         <a href="/register">Vous n'avez pas de compte? <span>Créez votre compte</span></a>
