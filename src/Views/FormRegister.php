@@ -14,11 +14,11 @@
                 id="email" 
                 name="userEmail" 
                 placeholder="Email"
-                class="<?php if ($_GET['error'] == '2') echo "input-error" ?>"
+                class="<?php if (isset($_GET['error']) && $_GET['error'] == '2') echo "input-error" ?>"
                 required
             >
             <?php 
-                if ($_GET['error'] == '2') {
+                if (isset($_GET['error']) && $_GET['error'] == '2') {
                     echo "<p class='error-message'>Cet email est déjà utilisé</p>";
                 }
             ?>
@@ -34,11 +34,11 @@
                 id="confirm-password" 
                 name="userConfirmPassword" 
                 placeholder="Mot de passe de confirmation" 
-                class="<?php if ($_GET['error'] == '1') echo "input-error"; ?>"
+                class="<?php if (isset($_GET['error']) && $_GET['error'] == '1') echo "input-error"; ?>"
                 required
             >
             <?php 
-                if ($_GET['error'] == '1') {
+                if (isset($_GET['error']) && $_GET['error'] == '1') {
                     echo "<p class='error-message'>Mot de passe de confirmation incorrect</p>";
                 }
             ?>
