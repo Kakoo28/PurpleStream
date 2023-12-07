@@ -52,6 +52,7 @@ class UserController
     public function login()
     {
         $email = strtolower(htmlspecialchars($_POST['user_email']));
+        echo $email;
     }
 
     public function showLoginForm() 
