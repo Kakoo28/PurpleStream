@@ -2,14 +2,14 @@
 
 namespace PurpleStream\Controllers;
 
-class HomeController {
+class LandingController {
     public function __construct() 
     {
 
     }
 
     public function index() {
-        require VIEWS . 'Home.php';
+        require VIEWS . 'Landing.php';
     }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace PurpleStream\Controllers;
-use PurpleStream\models\CategoryManager;
+use PurpleStream\Models\CategoryManager;
 
 class CategoryController
 {

@@ -2,8 +2,8 @@
 
 namespace PurpleStream\Controllers;
 
-use PurpleStream\models\anime;
-use PurpleStream\models\AnimeManager;
+use PurpleStream\Models\anime;
+use PurpleStream\Models\AnimeManager;
 use PurpleStream\Controllers\CategoryController;
 class AnimeController
 {

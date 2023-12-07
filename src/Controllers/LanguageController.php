@@ -2,7 +2,7 @@
 
 namespace PurpleStream\Controllers;
 
-use PurpleStream\models\LanguageManager;
+use PurpleStream\Models\LanguageManager;
 
 class LanguageController
 {

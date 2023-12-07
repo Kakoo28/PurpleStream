@@ -1,6 +1,6 @@
 <?php
 
-namespace PurpleStream\models;
+namespace PurpleStream\Models;
 
 class AnimeManager
 {
