@@ -23,6 +23,20 @@ class AnimeController
         require VIEWS . 'FormCreateAnime.php';
     }
 
+    public function showHomePage(){
+        // Récupérer tous les animes
+        $allAnimes = $this->animeManager->getAll();
+
+        // Afficher chaque fiche d'anime
+        $content = '';
+        foreach ($allAnimes as $anime) {
+            $content .= $this->showFicheAnime($anime);
+        }
+
+        // Inclure la vue de la page d'accueil avec le contenu généré
+        require VIEWS . 'HomePage.php';
+    }
+
     public function createAnime(){
         $anime = new Anime();
 
@@ -62,6 +76,16 @@ class AnimeController
     public function showSuccesfulCreate(Anime $anime, $message = null)
     {
         return "<h1>Votre animée a été créer avec sucées</h1>";
+    }
+
+    public function showFicheAnime(Anime $anime, $message = null)
+    {
+        return "
+         <article>
+            <article class='anime-card' >
+                <h3>" .  $anime->getAnimeName()  . "</h3>
+                <img class='image-card_anime' src='/img/anime/" . $anime->getAnimeImage() . "' alt=''>
+            </article >";
     }
 
 }
