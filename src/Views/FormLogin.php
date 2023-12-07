@@ -27,6 +27,11 @@
                 placeholder="Mot de passe" 
                 required
             >
+            <?php 
+                if (isset($_GET['status']) && $_GET['status'] == '401') {
+                    echo "<p class='error-message'>Email ou mot de passe incorrect</p>";
+                }
+            ?>
             <button type="submit" class="button submit-button">Connexion</button>
         </form>
         <a href="/register">Vous n'avez pas de compte? <span>Créez votre compte</span></a>
