@@ -5,9 +5,9 @@ namespace PurpleStream\Controllers;
 use PurpleStream\Models\anime;
 use PurpleStream\Models\AnimeManager;
 use PurpleStream\Controllers\CategoryController;
+
 class AnimeController
 {
-
     private $animeManager;
     public function __construct()
     {
