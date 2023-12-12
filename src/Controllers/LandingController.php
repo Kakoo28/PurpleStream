@@ -11,4 +11,5 @@ class LandingController {
     public function index() {
         require VIEWS . 'Landing.php';
     }
+
 }
