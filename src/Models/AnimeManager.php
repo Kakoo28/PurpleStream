@@ -14,34 +14,46 @@ class AnimeManager
         $this->connexion->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
-    public function animePush(Anime $anime)
+    public function getAllCategories()
     {
-        $stmt = $this->connexion->prepare("INSERT INTO anime (anime_name, anime_description, anime_image, language_id) VALUES (? ,?,?,?)");
-        $stmt->execute(array(
-            $anime->getAnimeName(),
-            $anime->getAnimeDescription(),
-            $anime->getAnimeImage(),
-            $anime->getLanguageId()
-        ));
-        // Recuperation de l'id dans une variable
-        $anime->setAnimeID( $this->connexion->lastInsertId());
-        foreach ($anime->getCategories() as $category_id){
-            $stmt = $this->connexion->prepare("INSERT INTO anime_cat (anime_id, category_id) VALUES (? ,?)");
-            $stmt->execute(array(
-                $anime->getAnimeID(),
-                $category_id
-            ));
-        }
-        // Renvoie l'ID de la dernière insertion
-        return $this->connexion->lastInsertId();
+        $stmt = $this->connexion->prepare("SELECT * FROM categories");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Category::class);
     }
 
-    public function getAll()
+    public function getAllLanguages()
     {
-        // Requête pour récupérer tous les animes
-        $stmt = $this->connexion->prepare('SELECT * FROM anime');
+        $stmt = $this->connexion->prepare("SELECT * FROM languages");
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, Anime::class);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Language::class);
     }
+
+    public function saveAnime(Anime $anime) 
+    {
+        $stmt = $this->connexion->prepare("INSERT INTO anime (language_id, anime_name, anime_description, anime_image) VALUES (?,?,?,?)");
+        $stmt->execute(array(
+            $anime->getAnimeLanguageID(),
+            $anime->getAnimeName(),
+            $anime->getAnimeDescription(),
+            $anime->getAnimeImage()
+        ));
+    
+        $animeId = $this->connexion->lastInsertId();
+        
+        // Appeler la deuxième méthode pour insérer dans la table anime_cat
+        $this->saveCategoriesAnime($animeId, $anime->getCategories());
+    
+        return $animeId;
+    }
+    
+    public function saveCategoriesAnime($animeId, $categoryIds)
+    {
+        // Insérer dans la table anime_cat pour chaque catégorie
+        foreach ($categoryIds as $categoryId) {
+            $stmt = $this->connexion->prepare("INSERT INTO anime_cat (anime_id, category_id) VALUES (?, ?)");
+            $stmt->execute([$animeId, $categoryId]);
+        }
+    }
+    
 
 }

@@ -14,78 +14,43 @@ class AnimeController
         $this->animeManager = new AnimeManager();
     }
 
-
-    public function showcreateAnime(){
-        $categoryController = new CategoryController();
-        $categories = $categoryController->getAll();
-        $languageController = new LanguageController();
-        $languages = $languageController->getAll();
-        require VIEWS . 'FormCreateAnime.php';
-    }
-
     public function showHomePage(){
-        // Récupérer tous les animes
-        $allAnimes = $this->animeManager->getAll();
-
-        // Afficher chaque fiche d'anime
-        $content = '';
-        foreach ($allAnimes as $anime) {
-            $content .= $this->showFicheAnime($anime);
-        }
-
-        // Inclure la vue de la page d'accueil avec le contenu généré
         require VIEWS . 'HomePage.php';
     }
 
-    public function createAnime(){
-        $anime = new Anime();
-
-        // Récupérer les catégories depuis le formulaire (supposons que le formulaire utilise un champ checkboxes)
-        $selectedCategories = isset($_POST['categories']) ? $_POST['categories'] : array();
-
-        // Assurez-vous de valider et nettoyer les données reçues si nécessaire (par exemple, htmlspecialchars)
-
-        // Définir les catégories pour l'objet Anime
-        $anime->setCategories($selectedCategories);
-
-        $contenu = $this->showSuccesfulCreate($anime);
-        $anime->setAnimeName(htmlspecialchars($_POST['anime_name']));
-        $anime->setAnimeDescription(htmlspecialchars($_POST['anime_description']));
-        $anime->setLanguageId($_POST['languageId']);
-        if ($_FILES['anime_image']["error"] !== UPLOAD_ERR_NO_FILE) {
-            $uploaddir = 'img/anime/';
-            $uploadfile = $uploaddir . basename($_FILES['anime_image']['name']);
-            move_uploaded_file($_FILES['anime_image']['tmp_name'], $uploadfile);
-            $anime->setAnimeImage($_FILES['anime_image']['name']);
-        } else {
-            $anime->setAnimeImage("default.jpg");
-        }
-        $this->animeManager->animePush($anime);
-        $contenu = $this->showSuccesfulCreate($anime);
+    public function showCreateAnimePage(){
+        $categories = $this->animeManager->getAllCategories();
+        $languages = $this->animeManager->getAllLanguages();
+        require VIEWS . 'FormCreateAnime.php';
     }
 
-
-    public function getAll()
+    public function createAnime()
     {
-        // Requête pour récupérer tous les services
-        $stmt = $this->connexion->prepare('SELECT * FROM category');
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, Anime::class);
+        $anime = new Anime();
+        $anime->setAnimeName($_POST["anime__name"]);
+        $anime->setAnimeDescription($_POST["anime__description"]);
+        
+        if (isset($_FILES['anime__image']) && $_FILES['anime__image']["error"] !== UPLOAD_ERR_NO_FILE) {
+            $uploaddir = 'img/anime';
+            $uploadfile = $uploaddir . basename($_FILES['anime__image']['name']);
+            
+            if (move_uploaded_file($_FILES['anime__image']['tmp_name'], $uploadfile)) {
+                $anime->setAnimeImage($_FILES['anime__image']['name']);
+            } else {
+                echo "Erreur lors du déplacement du fichier.";
+            }
+        }
+        
+        $anime->setAnimeLanguageID($_POST["anime__select-language"]);
+        $anime->setCategories($_POST["anime__select-categories"]);
+
+        $saveAnime = $this->animeManager->saveAnime($anime);
+        $contenu = $this->showSuccesfulCreate($anime);
+        require VIEWS . 'Layout.php'; 
     }
 
     public function showSuccesfulCreate(Anime $anime, $message = null)
     {
-        return "<h1>Votre animée a été créer avec sucées</h1>";
+        return "<h1>Votre animée a été créer avec succées</h1>";
     }
-
-    public function showFicheAnime(Anime $anime, $message = null)
-    {
-        return "
-         <article>
-            <article class='anime-card' >
-                <h3>" .  $anime->getAnimeName()  . "</h3>
-                <img class='image-card_anime' src='/img/anime/" . $anime->getAnimeImage() . "' alt=''>
-            </article >";
-    }
-
 }
