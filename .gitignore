@@ -1,4 +1,4 @@
 .idea/
 vendor/
 .DS_Store
-img/anime/*
+public/img/anime/*
