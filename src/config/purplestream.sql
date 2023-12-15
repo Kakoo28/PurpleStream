@@ -31,6 +31,8 @@ create table anime_season
    season_id            int not null auto_increment,
    anime_id             int not null,
    season_name          varchar(30) not null,
+   season_description   text not null,
+   season_image         varchar(255) not null,
    primary key (season_id)
 );
 
@@ -47,7 +49,7 @@ create table anime_cat
 /*==============================================================*/
 /* Table : category                                             */
 /*==============================================================*/
-create table category
+create table categories
 (
    category_id          int not null auto_increment,
    category_name        varchar(30),
@@ -57,7 +59,7 @@ create table category
 /*==============================================================*/
 /* Table : langage                                              */
 /*==============================================================*/
-create table langage
+create table languages
 (
    language_id          int not null auto_increment,
    langage_name         varchar(50) not null,
@@ -90,7 +92,7 @@ create table users_profiles
 );
 
 alter table anime add constraint fk_traduire foreign key (language_id)
-      references langage (language_id) on delete restrict on update restrict;
+      references languages (language_id) on delete restrict on update restrict;
 
 alter table anime_episode add constraint fk_avoir foreign key (season_id)
       references anime_season (season_id) on delete restrict on update restrict;
@@ -102,7 +104,7 @@ alter table anime_cat add constraint fk_correspondre foreign key (anime_id)
       references anime (anime_id) on delete restrict on update restrict;
 
 alter table anime_cat add constraint fk_correspondre2 foreign key (category_id)
-      references category (category_id) on delete restrict on update restrict;
+      references categories (category_id) on delete restrict on update restrict;
 
 alter table users_profiles add constraint fk_regrouper foreign key (user_id)
       references users (user_id) on delete restrict on update restrict;

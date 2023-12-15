@@ -9,6 +9,7 @@ class Anime
     private $anime_description;
     private $anime_image;
     private $language_id;
+    private $category_id;
     private $categories = array();
 
     public function __construct()
