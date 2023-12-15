@@ -6,8 +6,8 @@ define("MODELS", SRC . 'Models/');
 define("VIEWS", SRC . 'Views/');
 
 define("DB_CONFIG", [
-    'HOST' => 'localhost:8889',
+    'HOST' => 'localhost',
     'DATABASE' => 'purplestream',
     'USER' => 'root',
-    'PASSWORD' => 'root'
+    'PASSWORD' => ''
 ]);
