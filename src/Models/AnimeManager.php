@@ -39,11 +39,12 @@ class AnimeManager
         ));
     
         $animeId = $this->connexion->lastInsertId();
+        $anime->setAnimeId($animeId);
         
         // Appeler la deuxième méthode pour insérer dans la table anime_cat
         $this->saveCategoriesAnime($animeId, $anime->getCategories());
     
-        return $animeId;
+        return $anime;
     }
     
     public function saveCategoriesAnime($animeId, $categoryIds)

@@ -16,12 +16,12 @@ class AnimeController
     }
 
     public function showHomePage() {
-        if (!$_SESSION['user'])
+        if (!isset($_SESSION['user']))
         {
             header('Location: /login');
             exit();
         }
-        else if (!$_SESSION['selected_profile'])
+        else if (!isset($_SESSION['selected_profile']))
         {
             header('Location: /profiles');
             exit();
