@@ -3,7 +3,7 @@
 namespace PurpleStream\Controllers;
 
 use PurpleStream\Models\UserManager;
-use PurpleStream\Models\UserModel;
+use PurpleStream\Models\User;
 
 class UserController 
 {
@@ -36,7 +36,7 @@ class UserController
             exit();
         }
 
-        $user = new UserModel();
+        $user = new User();
 
         $hashed_password = password_hash($_POST['user_password'], PASSWORD_BCRYPT);
 
@@ -63,13 +63,13 @@ class UserController
         }
 
         $_SESSION['user'] = array(
-            'user_id' => $user['user_id'],
-            'user_email' => $user['user_email'],
-            'user_name' => $user['user_name'],
-            'user_role' => $user['user_role']
+            'user_id' => $user->getUserId(),
+            'user_email' => $user->getUserEmail(),
+            'user_name' => $user->getUserName(),
+            'user_role' => $user->getUserRole()
         );
 
-        header('Location: /home');
+        header('Location: /profiles');
     }
 
     public function showLoginForm() 

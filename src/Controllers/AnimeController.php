@@ -57,9 +57,10 @@ class AnimeController
         $anime->setAnimeLanguageID($_POST["anime__select-language"]);
         $anime->setCategories($_POST["anime__select-categories"]);
 
-        $this->animeManager->saveAnime($anime);
-        
+        $anime = $this->animeManager->saveAnime($anime);
+
         $content = $this->showSuccesfulCreate($anime);
+        
         require VIEWS . 'Layout.php'; 
     }
 

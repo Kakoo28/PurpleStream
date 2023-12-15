@@ -2,7 +2,7 @@
 
 namespace PurpleStream\Models;
 
-class UserModel
+class User
 {
     private $user_id;
     private $user_email;
