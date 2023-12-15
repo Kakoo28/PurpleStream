@@ -3,8 +3,8 @@
 namespace PurpleStream\Controllers;
 
 use PurpleStream\Models\anime;
+use PurpleStream\Models\Season;
 use PurpleStream\Models\AnimeManager;
-use PurpleStream\Controllers\CategoryController;
 
 class AnimeController
 {
@@ -24,11 +24,16 @@ class AnimeController
         require VIEWS . 'FormCreateAnime.php';
     }
 
+    public function showCreateAnimeSeason()
+    {
+        require VIEWS . 'FormCreateSeason.php';
+    }
+
     public function createAnime()
     {
         $anime = new Anime();
-        $anime->setAnimeName($_POST["anime__name"]);
-        $anime->setAnimeDescription($_POST["anime__description"]);
+        $anime->setAnimeName(htmlspecialchars($_POST["anime__name"]));
+        $anime->setAnimeDescription(htmlspecialchars($_POST["anime__description"]));
         
         if (isset($_FILES['anime__image']) && $_FILES['anime__image']["error"] !== UPLOAD_ERR_NO_FILE) {
             $uploaddir = 'img/anime';
@@ -41,16 +46,46 @@ class AnimeController
             }
         }
         
-        $anime->setAnimeLanguageID($_POST["anime__select-language"]);
+        $anime->setAnimeLanguageID(htmlspecialchars($_POST["anime__select-language"]));
         $anime->setCategories($_POST["anime__select-categories"]);
 
         $saveAnime = $this->animeManager->saveAnime($anime);
-        $contenu = $this->showSuccesfulCreate($anime);
+        $content = $this->showSuccesfulCreate($saveAnime);
         require VIEWS . 'Layout.php'; 
     }
 
-    public function showSuccesfulCreate(Anime $anime, $message = null)
+    public function createSeason($id)
     {
-        return "<h1>Votre animée a été créer avec succées</h1>";
+        $season = new Season();
+        $season->setAnimeId($id);
+        $season->setSeasonName(htmlspecialchars($_POST["season__name"]));
+        $season->setSeasonDescritpion(htmlspecialchars($_POST["season__desription"]));
+
+        if (isset($_FILES['season__image']) && $_FILES['season__image']["error"] !== UPLOAD_ERR_NO_FILE) {
+            $uploaddir = 'img/season';
+            $uploadfile = $uploaddir . basename($_FILES['season__image']['name']);
+            
+            if (move_uploaded_file($_FILES['season__image']['tmp_name'], $uploadfile)) {
+                $season->setSeasonImage($_FILES['season__image']['name']);
+            } else {
+                echo "Erreur lors du déplacement du fichier.";
+            }
+        }
+
+        $saveSeason = $this->animeManager->saveSeason($season);
+
+        require VIEWS . "Layout.php";
+    }
+
+    public function showSuccesfulCreate($saveAnime, $message = null)
+    {
+        return "
+            <div class='div__anime'>
+                <h1>Votre animée a été créer avec succées</h1>
+                <div class='div__anime-button'>
+                <button><a href='create-season?id=" . $saveAnime . "'>crée saison</a></button>
+                </div>
+            </div>  
+            ";
     }
 }

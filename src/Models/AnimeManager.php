@@ -44,6 +44,17 @@ class AnimeManager
         $this->saveCategoriesAnime($animeId, $anime->getCategories());
     
         return $animeId;
+    }   
+
+    public function saveSeason(Season $season)
+    {
+        $stmt = $this->connexion->prepare("INSERT INTO anime_season (anime_id, season_name, season_description, season_image) VALUES (?,?,?,?)");
+        $stmt->execute(array(
+            $season->getAnimeID(),
+            $season->getSeasonName(),
+            $season->getSeasonDescription(),
+            $season->getSeasonImage()
+        ));
     }
     
     public function saveCategoriesAnime($animeId, $categoryIds)

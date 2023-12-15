@@ -16,7 +16,9 @@ $router->post('/process-login', 'UserController@login');
 $router->post('/process-register', 'UserController@create');
 
 $router->get('/anime/create', 'AnimeController@showCreateAnimePage');
+$router->get('/anime/create-season/?:id', 'AnimeController@showCreateAnimeSeason');
 $router->post('/anime/process-create', 'AnimeController@createAnime');
+$router->post('/anime/process-create-season/?:id', 'AnimeController@createSeason');
 
 $router->get('/home', 'AnimeController@showHomePage');
 
