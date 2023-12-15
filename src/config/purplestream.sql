@@ -84,11 +84,11 @@ create table users
 /*==============================================================*/
 create table users_profiles
 (
-   user_profileid       int not null auto_increment,
+   profile_id       int not null auto_increment,
    user_id              int not null,
-   user_profilname      varchar(10),
-   user_image           varchar(200),
-   primary key (user_profileid)
+   profile_name      varchar(10),
+   profile_image           varchar(200),
+   primary key (profile_id)
 );
 
 alter table anime add constraint fk_traduire foreign key (language_id)
