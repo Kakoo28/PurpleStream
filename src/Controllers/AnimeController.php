@@ -50,14 +50,16 @@ class AnimeController
                 $anime->setAnimeImage($_FILES['anime__image']['name']);
             } else {
                 echo "Erreur lors du déplacement du fichier.";
+                exit();
             }
         }
         
         $anime->setAnimeLanguageID($_POST["anime__select-language"]);
         $anime->setCategories($_POST["anime__select-categories"]);
 
-        $saveAnime = $this->animeManager->saveAnime($anime);
-        $contenu = $this->showSuccesfulCreate($anime);
+        $this->animeManager->saveAnime($anime);
+        
+        $content = $this->showSuccesfulCreate($anime);
         require VIEWS . 'Layout.php'; 
     }
 
