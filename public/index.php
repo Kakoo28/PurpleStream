@@ -19,7 +19,7 @@ $router->get('/anime/create', 'AnimeController@showCreateAnimePage');
 $router->get('/anime/create-season/?:id', 'AnimeController@showCreateAnimeSeason');
 $router->get('/anime/create-episode/?:id', 'AnimeController@showCreateEpisode');
 $router->get('/admin/animemanager', 'AnimeController@showAnimeManager');
-$router->get('/anime/show-season/?:id', 'AnimeController@showAnimeSeason');
+$router->get('/anime/w', 'AnimeController@showAnimeSeason');
 $router->get('/anime/show-episode/?:id', 'AnimeController@showAnimeEpisode');
 $router->post('/anime/process-create', 'AnimeController@createAnime');
 $router->post('/anime/process-create-season/?:id', 'AnimeController@createSeason');
