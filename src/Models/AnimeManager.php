@@ -55,6 +55,27 @@ class AnimeManager
             $season->getSeasonDescription(),
             $season->getSeasonImage()
         ));
+
+        return $seasonID = $this->connexion->lastInsertId();
+    }
+
+    public function saveEpisode(Episode $episode)
+    {
+        $stmt = $this->connexion->prepare("INSERT INTO anime_episode (season_id, episode_name, episode_mp4) VALUES (?,?,?)");
+        $stmt->execute(array(
+            $episode->getSeasonID(),
+            $episode->getEpisodeName(),
+            $episode->getEpisodeMP4()
+        ));
+
+        return $episodeID = $this->connexion->lastInsertId();
+    }
+
+    public function searchAllAnimes($anime)
+    {
+        $stmt = $this->connexion->prepare("SELECT * FROM anime WHERE anime_name LIKE ?");
+        $stmt->execute(array("%$anime%"));
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Anime::class);
     }
     
     public function saveCategoriesAnime($animeId, $categoryIds)
@@ -64,6 +85,13 @@ class AnimeManager
             $stmt = $this->connexion->prepare("INSERT INTO anime_cat (anime_id, category_id) VALUES (?, ?)");
             $stmt->execute([$animeId, $categoryId]);
         }
+    }
+
+    public function getAllSeasonsAnime($id)
+    {
+        $stmt = $this->connexion->prepare("SELECT * FROM anime_season WHERE anime_id = ?");
+        $stmt->execute(array($id));
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Season::class);
     }
     
 
