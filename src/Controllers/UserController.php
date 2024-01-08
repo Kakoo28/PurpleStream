@@ -56,7 +56,7 @@ class UserController
 
         $user = $this->userManager->getUserByEmail($email);
 
-        if (!$user || !password_verify($password, $user['user_password']))
+        if (!$user || !password_verify($password, $user->getUserPassword()))
         {
             header('Location: /login?status=401');
             exit();
